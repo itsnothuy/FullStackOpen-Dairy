@@ -278,11 +278,27 @@ sequenceDiagram
   participant App
   participant React as React Runtime
 
-  App->>React: setLeft(left + 1)  // enqueued
+  App->>React: setLeft(left + 1)  %% enqueued
   Note right of React: Update is queued until next render
 
-  App-->>App: const updatedLeft = left + 1  // or setLeft(prev => prev + 1)
+  App-->>App: const updatedLeft = left + 1  %% or setLeft(prev => prev + 1)
   App->>React: setLeft(updatedLeft); setTotal(updatedLeft + right)
+  React-->>App: re-render with correct totals
+```
+```mermaid
+sequenceDiagram
+  participant App
+  participant React as React Runtime
+
+  App->>React: setLeft(left + 1)
+  Note right of React: Update is queued until next render
+
+  App->>App: compute updatedLeft = left + 1
+  Note over App,React: Or use setLeft(prev => prev + 1)
+
+  App->>React: setLeft(updatedLeft)
+  App->>React: setTotal(updatedLeft + right)
+
   React-->>App: re-render with correct totals
 ```
 
