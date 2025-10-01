@@ -149,10 +149,10 @@ npm run dev
 
 ## Mermaid evidence (component tree)
 ```mermaid
-graph TD
-  A[App] --> B[Hello (Maya, 36)]
-  A[App] --> C[Hello (Peter, 10)]
-  A[App] --> D[Footer]
+flowchart TD;
+  A[App] --> B["Hello (Maya, 36)"];
+  A --> C["Hello (Peter, 10)"];
+  A --> D[Footer];
 ```
 > GitHub renders Mermaid in Markdown; this diagram stays text‑based.
 
